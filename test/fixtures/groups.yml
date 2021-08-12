@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  member: 1
+  debut_date: 2021-08-09
+  gender: 1
+
+two:
+  name: MyString
+  member: 1
+  debut_date: 2021-08-09
+  gender: 1

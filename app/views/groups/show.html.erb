@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @group.member %>
+</p>
+
+<p>
+  <strong>Debut date:</strong>
+  <%= @group.debut_date %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @group.gender %>
+</p>
+
+<p>
+  <strong>Concert:</strong>
+  <% month = Time.now.month %>
+  <% m = 0 %>
+  <% @group.concerts.each do |concert|%>
+      <%if concert.concert_date.month == month %>
+        <% m += 1%>
+      <%end%>
+  <%end%>
+  <%= m %>
+</p>
+
+<strong>Last concert:</strong>
+  <% last_concert = Date.new(0000-00-00) %>
+  <% @group.concerts.each do |concert| %>
+    <% if concert.concert_date > last_concert %>
+      <% last_concert = concert.concert_date %>
+    <% end %>
+  <% end %>
+  <%= last_concert.strftime("%Y %B %A") %>
+</p>
+
+<strong>Max participant:</strong>
+<% max_participant = 0 %>
+  <% @group.concerts.each do |concert| %>
+    <% if concert.participant > max_participant %>
+      <%  max_participant = concert.participant%>
+    <% end %>
+  <% end %>
+   <%= max_participant %>
+</p> 
+
+<strong>Longest concert:</strong>
+<% longest_concert = 0 %>
+  <% @group.concerts.each do |concert| %>
+    <% if concert.duration > longest_concert %>
+      <%  longest_concert = concert.duration%>
+    <% end %>
+  <% end %>
+   <%= longest_concert %>
+</p>  
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
